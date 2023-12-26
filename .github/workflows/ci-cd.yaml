@@ -26,4 +26,4 @@ jobs:
           #ssh root@13.229.150.173 'cd /path/to/remote/directory && git pull origin main'
           ssh root@13.229.150.173 'cd /var/www/html
           pwd
-          ech "test compelete"
+          echo "login success"

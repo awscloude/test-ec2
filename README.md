@@ -6,7 +6,7 @@ chmod +x ./kind
 
 mv ./kind /bin/kind
 
-Steps to install Kubectl ############################
+Steps to install Kubectl ##############################
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 

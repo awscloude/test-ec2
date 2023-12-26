@@ -19,4 +19,5 @@ jobs:
       - name: Execute Deployment Script
         run: |
           chmod +x e2-connect.sh
-          ./e2-connect.sh
+          #./e2-connect.sh
+          bash e2-connect.sh

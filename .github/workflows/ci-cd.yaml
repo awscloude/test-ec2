@@ -18,5 +18,8 @@ jobs:
       with:
         args: |
           cd repo
-          git pull
+          git clone https://github.com/awscloude/test-ec2.git
+          cd test-ec2
+          ls
+          echo "tet done"
         

@@ -1,4 +1,4 @@
-Steps to install KIND Cluster:#########################
+Steps to install KIND Cluster:###########################
 
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
 

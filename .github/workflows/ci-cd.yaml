@@ -1,9 +1,9 @@
-name: Deploy to Server
+name: Deploy to EC2 with Password
 
 on:
   push:
     branches:
-      - main # Change this to your branch name
+      - main
 
 jobs:
   deploy:
@@ -13,17 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install SSH Client
-        run: sudo apt-get install -y openssh-client
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy Code to Server
+      - name: Execute Deployment Script
         run: |
-          #ssh root@13.229.150.173 'cd /path/to/remote/directory && git pull origin main'
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} root@13.229.150.173 'cd /var/www/html'
-          pwd
-          echo "login success"
+          chmod +x e2-connect.sh
+          ./e2-connect.sh

@@ -6,7 +6,7 @@ on:
       - main # Change this to your branch name
 
 jobs:
-  deploy:
+  deploy-to-ec2:
     runs-on: ubuntu-latest
     steps:
     - name: Update Server Repo

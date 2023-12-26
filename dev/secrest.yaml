@@ -1,0 +1,17 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJjY3Jvc3NjbG91ZCIsInBhc3N3b3JkIjoiZGNrcl9wYXRfV2dMZ3ZvWTVKNmgxaG5zOHdORTU4NVlUT1NBIiwiZW1haWwiOiJzdXJ2aXZhbG1vdGl2YXRvckBnbWFpbC5jb20iLCJhdXRoIjoiWTJOeWIzTnpZMnh2ZFdRNlpHTnJjbDl3WVhSZlYyZE1aM1p2V1RWS05tZ3hhRzV6T0hkT1JUVTROVmxVVDFOQiJ9fX0=
+  kind: Secret
+  metadata:
+    creationTimestamp: "2023-07-15T13:30:30Z"
+    name: argocd-to-docker-hub
+    namespace: myapp
+    resourceVersion: "108030"
+    uid: 568aff0f-9498-463d-8318-8ff2ec74ef30
+  type: kubernetes.io/dockerconfigjson
+kind: List
+metadata:
+  resourceVersion: ""
+

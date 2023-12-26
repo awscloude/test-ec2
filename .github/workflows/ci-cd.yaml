@@ -16,6 +16,9 @@ jobs:
       - name: Install SSH Client
         run: sudo apt-get install -y openssh-client
 
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
       #- name: Set up SSH
        # uses: webfactory/ssh-agent@v0.5.4
        # with:

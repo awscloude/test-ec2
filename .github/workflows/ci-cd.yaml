@@ -20,4 +20,4 @@ jobs:
         run: |
           chmod +x e2-connect.sh
           #./e2-connect.sh
-          bash e2-connect.sh
+          sh e2-connect.sh

@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-
-      - name: Execute Deployment Script
-        run: |
-          chmod +x e2-connect.sh
-          #./e2-connect.sh
-          sh e2-connect.sh
+    - uses: actions/checkout@v2
+    - run: npm install
+      shell: bash
+    - uses: tzzs/server-shell@v3
+      with:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+        USERNAME: ${{secrets.USERNAME}}
+        IP: ${{secrets.IP}}
+        PORT: ${{secrets.PORT}}
+        SHELL: |
+          "echo action-test"
+          "ls"

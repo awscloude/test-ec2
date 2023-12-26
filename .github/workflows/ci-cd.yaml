@@ -34,4 +34,4 @@ jobs:
 
       - name: Deploy Code to Server
         run: |
-          ssh $USERNAME@$IP 'cd /path/to/remote/directory && git pull origin main'
+          ssh -v $USERNAME@$IP 'cd /path/to/remote/directory && git pull origin main'

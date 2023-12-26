@@ -1,24 +1,37 @@
-name: Deploy to EC2 with Password
+name: Deploy to Server
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to your branch name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - run: apt install apache2
-      shell: bash
-    - uses: tzzs/server-shell@v3
-      with:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
-        USERNAME: ${{secrets.USERNAME}}
-        IP: ${{secrets.IP}}
-        PORT: ${{secrets.PORT}}
-        SHELL: |
-          "echo action-test"
-          "ls"
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y openssh-client
+
+      #- name: Set up SSH
+       # uses: webfactory/ssh-agent@v0.5.4
+       # with:
+         # ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: connect to server
+        uses: tzzs/server-shell@v3
+        with:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+          USERNAME: ${{secrets.USERNAME}}
+          IP: ${{secrets.IP}}
+          PORT: ${{secrets.PORT}}
+          SHELL: |
+            "echo action-test"
+            "ls"
+
+      - name: Deploy Code to Server
+        run: |
+          ssh $USERNAME@$IP 'cd /path/to/remote/directory && git pull origin main'

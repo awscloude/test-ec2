@@ -13,22 +13,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install SSH Client
-        run: sudo apt-get install -y openssh-client
-
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-
-      #- name: Set up SSH
-       # uses: webfactory/ssh-agent@v0.5.4
-       # with:
-         # ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: connect to server
-        run: |
-          bash e2-connect.sh
+        uses: tzzs/server-shell@v3
+        with:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+          USERNAME: ${{secrets.USERNAME}}
+          IP: ${{secrets.IP}}
+          PORT: ${{secrets.PORT}}
+          SHELL: |
+            "echo action-test"
+            "ls"
         
-
-      - name: Deploy Code to Server
-        run: |
-          ssh -v $USERNAME@$IP 'cd /path/to/remote/directory && git pull origin main'

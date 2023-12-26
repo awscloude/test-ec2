@@ -22,15 +22,9 @@ jobs:
          # ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: connect to server
-        uses: tzzs/server-shell@v3
-        with:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
-          USERNAME: ${{secrets.USERNAME}}
-          IP: ${{secrets.IP}}
-          PORT: ${{secrets.PORT}}
-          SHELL: |
-            "echo action-test"
-            "ls"
+        run: |
+          bash e2-connect.sh
+        
 
       - name: Deploy Code to Server
         run: |

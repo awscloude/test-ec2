@@ -24,6 +24,6 @@ jobs:
       - name: Deploy Code to Server
         run: |
           #ssh root@13.229.150.173 'cd /path/to/remote/directory && git pull origin main'
-          ssh root@13.229.150.173 'cd /var/www/html'
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} root@13.229.150.173 'cd /var/www/html'
           pwd
           echo "login success"

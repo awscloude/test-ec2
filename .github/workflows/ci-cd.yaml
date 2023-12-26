@@ -6,21 +6,17 @@ on:
       - main # Change this to your branch name
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: connect to server
-        uses: tzzs/server-shell@v3
-        with:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
-          USERNAME: ${{secrets.USERNAME}}
-          IP: ${{secrets.IP}}
-          PORT: ${{secrets.PORT}}
-          SHELL: |
-            "echo action-test"
-            "ls"
+    - name: Update Server Repo
+      uses: maddox/actions/ssh@master
+      env:
+        PRIVATE_KEY: ${{ secrets.KEY }}
+        HOST: ${{ secrets.HOST }}
+        USER: ${{ secrets.USER }}
+      with:
+        args: |
+          cd repo
+          git pull
         

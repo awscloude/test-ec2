@@ -17,11 +17,11 @@ jobs:
         USER: ${{ secrets.USER }}
       with:
         args: |
-          cd repo
-          git clone https://github.com/awscloude/test-ec2.git
-          cd test-ec2
-          ls
-          echo "tet done"
+          #cd repo
+          #git clone https://github.com/awscloude/test-ec2.git
+          #cd test-ec2
+          #ls
+          echo "test done"
 
   deploy-to-k8s:
     runs-on: ubuntu-latest

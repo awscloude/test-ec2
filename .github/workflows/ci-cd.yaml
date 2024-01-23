@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: SSH Deployment
 
 on:
   push:
@@ -10,22 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Install sshpass
-      run: sudo apt-get update && sudo apt-get install -y sshpass
-
-    - name: Deploy to server
-      run: |
-        set -x
-        # Replace these variables with your actual values
-        SERVER_IP=203.202.247.206
-        SERVER_USER=root
-        SERVER_PASSWORD="${{ secrets.SERVER_PASSWORD }}"
-        # Using sshpass to execute a command on the server
-        sshpass -p "${SERVER_PASSWORD}" ssh ${SERVER_USER}@${SERVER_IP} "cd /root/repo_test"
-    - name: test login
-      run: |
-        pwd
-        echo "deploy done"
+    - name: SSH and run commands
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd /home/mrubel/project1  && git pull && composer install

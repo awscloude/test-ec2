@@ -10,13 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Connect to Server
-        run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} "echo Hello from GitHub Actions"
-      - name: deploy to server 
-        run: |
-          echo "test done"
-      
+    - name: Install sshpass
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+
+    - name: Deploy to server
+      run: |
+        sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh username@203.202.247.206 "cd /root/repo_test && git pull origin main"

@@ -18,4 +18,14 @@ jobs:
 
     - name: Deploy to server
       run: |
-        sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh root@203.202.247.206 "cd /root/repo_test && git pull origin main"
+        # Replace these variables with your actual values
+        SERVER_IP="203.202.247.206"
+        SERVER_USER="root"
+        SERVER_PASSWORD="${{ secrets.SERVER_PASSWORD }}"
+
+        # Using sshpass to execute a command on the server
+        sshpass -p "${SERVER_PASSWORD}" ssh ${SERVER_USER}@${SERVER_IP} "cd /root/repo_test"
+    - name: test login
+      run: |
+        pwd
+        echo "deploy done"

@@ -21,4 +21,8 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          cd /home/mrubel/project1  && git pull && composer install
+          #cd /home/mrubel/project1  && git pull && composer install
+          cd /root/repo_test
+          pwd
+          echo "test done"
+      

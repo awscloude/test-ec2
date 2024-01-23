@@ -6,7 +6,7 @@ on:
       - staging
 
 jobs:
-  deploy:
+  deploy-to-staging-oms-data:
     runs-on: ubuntu-latest
 
     steps:

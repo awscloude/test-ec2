@@ -18,4 +18,4 @@ jobs:
 
     - name: Deploy to server
       run: |
-        sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh username@203.202.247.206 "cd /root/repo_test && git pull origin main"
+        sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh root@203.202.247.206 "cd /root/repo_test && git pull origin main"

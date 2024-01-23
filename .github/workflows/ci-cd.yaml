@@ -17,18 +17,11 @@ jobs:
         USER: ${{ secrets.USER }}
       with:
         args: |
-          #cd repo
-          #git clone https://github.com/awscloude/test-ec2.git
-          #cd test-ec2
-          #ls
+          cd repo
+          git clone https://github.com/awscloude/test-ec2.git
+          cd test-ec2
+          ls
           echo "test done"
           
-    - name: Set up Kubectl
-      uses: azure/k8s-set-context@v1
-      with:
-        kubeconfig: ${{ secrets.KUBECONFIG }}
-    - name: Deploy
-      run: |
-        kubectl apply -f kubernetes/deployment.yaml
-        kubectl apply -f kubernetes/service.yaml
+
         

@@ -19,8 +19,8 @@ jobs:
     - name: Deploy to server
       run: |
         # Replace these variables with your actual values
-        SERVER_IP="203.202.247.206"
-        SERVER_USER="root"
+        SERVER_IP=203.202.247.206
+        SERVER_USER=root
         SERVER_PASSWORD="${{ secrets.SERVER_PASSWORD }}"
 
         # Using sshpass to execute a command on the server

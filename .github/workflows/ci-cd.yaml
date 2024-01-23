@@ -16,5 +16,7 @@ jobs:
       - name: Connect to Server
         run: |
           sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} "echo Hello from GitHub Actions"
-        env:
-          SSH_AUTH_SOCK: /dev/null
+      - name: deploy to server 
+        run: |
+          echo "test done"
+      

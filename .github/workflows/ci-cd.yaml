@@ -3,25 +3,18 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - staging # Change this to your branch name
+      - staging
 
 jobs:
-  deploy-to-ec2:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-    - name: Update Server Repo
-      uses: maddox/actions/ssh@master
-      env:
-        PRIVATE_KEY: ${{ secrets.KEY }}
-        HOST: ${{ secrets.HOST }}
-        USER: ${{ secrets.USER }}
-      with:
-        args: |
-          cd repo
-          git clone https://github.com/awscloude/test-ec2.git
-          cd test-ec2
-          ls
-          echo "test done"
-          
 
-        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Connect to Server
+        run: |
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} "echo Hello from GitHub Actions"
+        env:
+          SSH_AUTH_SOCK: /dev/null
